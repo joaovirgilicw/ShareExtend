@@ -42,7 +42,7 @@ public class ShareExtendPlugin implements FlutterPlugin, ActivityAware, PluginRe
     public void onAttachedToActivity(@NonNull ActivityPluginBinding activityPluginBinding) {
         activityBinding = activityPluginBinding;
         methodChannel = new MethodChannel(pluginBinding.getBinaryMessenger(), CHANNEL);
-        share = new Share(context);
+        share = new Share(activityBinding.getActivity());
         callHandler = new MethodCallHandlerImpl(share);
         methodChannel.setMethodCallHandler(callHandler);
         activityBinding.addRequestPermissionsResultListener(this);
